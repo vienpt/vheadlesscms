@@ -6,16 +6,13 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using Recipe.API.Infrastructure;
 
-namespace Recipe.API
+namespace Blog.API
 {
     public class Startup
     {
@@ -24,7 +21,7 @@ namespace Recipe.API
             Configuration = configuration;
         }
 
-        private IConfiguration Configuration { get; }
+        public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -32,12 +29,8 @@ namespace Recipe.API
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Recipe.API", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Blog.API", Version = "v1" });
             });
-            services.AddInfrastructure();
-            // TODO: Enable when migration, update database 
-            // services.AddDbContext<RecipeContext>(options =>
-            //     options.UseNpgsql(Configuration.GetConnectionString("RecipeContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -47,7 +40,7 @@ namespace Recipe.API
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Recipe.API v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Blog.API v1"));
             }
 
             app.UseHttpsRedirection();

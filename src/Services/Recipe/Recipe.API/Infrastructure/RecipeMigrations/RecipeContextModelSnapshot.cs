@@ -60,6 +60,10 @@ namespace Recipe.API.Infrastructure.RecipeMigrations
                     b.Property<int>("AuthorId")
                         .HasColumnType("integer");
 
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<DateTimeOffset?>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
 

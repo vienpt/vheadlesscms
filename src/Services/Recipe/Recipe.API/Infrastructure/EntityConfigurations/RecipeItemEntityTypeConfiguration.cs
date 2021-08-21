@@ -18,6 +18,9 @@ namespace Recipe.API.Infrastructure.EntityConfigurations
                 .IsRequired()
                 .HasMaxLength(50);
 
+            builder.Property(ci => ci.Content)
+                .IsRequired();
+
             builder.Property(ci => ci.Description)
                 .IsRequired(false);
 

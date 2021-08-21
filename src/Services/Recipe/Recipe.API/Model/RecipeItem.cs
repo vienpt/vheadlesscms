@@ -7,6 +7,7 @@ namespace Recipe.API.Model
     {
         public int Id { get; set; }
         public string Title { get; set; }
+        public string Content { get; set; }
         public string Description { get; set; }
         public string Meal { get; set; }
         public string Img { get; set; }

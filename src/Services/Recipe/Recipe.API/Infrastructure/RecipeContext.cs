@@ -1,3 +1,4 @@
+using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Recipe.API.Infrastructure.EntityConfigurations;
@@ -20,6 +21,11 @@ namespace Recipe.API.Infrastructure
             modelBuilder.ApplyConfiguration(new RecipeItemEntityTypeConfiguration());
             modelBuilder.ApplyConfiguration(new RecipeTagEntityTypeConfiguration());
             modelBuilder.ApplyConfiguration(new RecipeAuthorEntityTypeConfiguration());
+        }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.LogTo(Console.WriteLine);
         }
     }
 }

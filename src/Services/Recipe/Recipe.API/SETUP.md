@@ -48,3 +48,23 @@ example:
 5. dotnet ef add migrations <name> --output-dir <folder>
 6. dotnet ef database update
 
+### Integrate EFCore vs Dapper
+
+https://codewithmukesh.com/blog/using-entity-framework-core-and-dapper/
+
+
+### IDbConnection Dapper
+
+```
+using (var connec = new NgqlConnection(<get connec from configuration>))
+{
+
+}
+```
+
+### Integrate with CQRS
+
+https://alexcodetuts.com/2020/03/07/asp-net-core-3-1-repository-pattern-and-unit-of-work-using-dapper/
+
+
+
